@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // MySQL database connection
 const db = require("./config/db.config.js");
 const mysql = require("mysql");
+const userRoutes = require('./routes/userRoutes.js');
 
 const PORT = process.env.PORT || 3000;
 
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to the ecommerce backend!" });
 });
 
+app.use('/users', userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
